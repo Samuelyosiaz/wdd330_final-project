@@ -9,7 +9,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, "src/index.html"),
-        cart: resolve(__dirname, "src/cart/index.html"),
         laptops: resolve(__dirname, "src/laptops/index.html"),
         lightning_deals: resolve(__dirname, "src/lightning_deals/index.html"),
         phones: resolve(__dirname, "src/phones/index.html"),
