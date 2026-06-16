@@ -3,6 +3,17 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   root: "src/",
+  envDir: "../",
+
+  server: {
+    proxy: {
+      '/api-serp': {
+        target: 'https://serpapi.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api-serp/, ''),
+      },
+    },
+  },
 
   build: {
     outDir: "../dist",
