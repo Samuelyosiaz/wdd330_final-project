@@ -1,4 +1,4 @@
-import { loadHeaderFooter, toggleMenu } from "./utils.mjs";
+import { loadHeaderFooter, toggleMenu, saveToStorage, triggerSuccessAnimation , purgeProductJson} from "./utils.mjs";
 import { loadProductDetails } from "./data.mjs";
 
 async function init() {
@@ -32,17 +32,17 @@ function renderPhoneDetails(data) {
     const feature = product.about_the_product.features.find(f => 
       f.title.toLowerCase().includes(keyword.toLowerCase())
     );
-    return feature ? feature.value : 'Not specified';
+    return feature ? feature.value : null;
   };
 
-  const processor = getFeature('Processor');
-  const battery = getFeature('Battery Capacity');
-  const screen = `${getFeature('Display Size')} - ${getFeature('Display Type')}`;
-  const camera = getFeature('Camera Resolution');
+  const processor = getFeature('Processor') || 'Not specified';
+  const battery = getFeature('Battery Capacity') || 'Not specified';
+  const screen = getFeature('Display Size') || getFeature('Screen Size') || 'Not specified';
+  const camera = getFeature('Camera Resolution') || 'Not specified';
+
   
-  const storageMatch = title.match(/(\d+(?:GB|TB))/i);
-  const storage = storageMatch ? storageMatch[0] : 'Not specified'; 
-  const ram = getFeature('RAM'); 
+  const storage = getFeature('Storage') || 'Not specified';
+  const ram = getFeature('RAM') || 'Not specified';
 
   const storesHtml = product.stores?.map(store => `
     <a href="${store.link}" target="_blank" class="store-card">
@@ -80,6 +80,11 @@ function renderPhoneDetails(data) {
       </ul>
     </div>
 
+    <div class="actions-panel">
+        <button id="add-to-wishlist-btn" class="btn-action">Add to Wish List</button>
+        <button id="add-to-vs-btn" class="btn-action">Add to Compare (VS)</button>
+    </div>
+
     <div class="product-stores">
       <h2>Where to Buy</h2>
       <div class="stores-list">
@@ -87,4 +92,24 @@ function renderPhoneDetails(data) {
       </div>
     </div>
   `;
+    //This part is responsible for adding the product to the wish list or the compare list when the corresponding button is clicked. It uses the saveToStorage function from utils.mjs to save the product data in local storage and then triggers a success animation to give feedback to the user.
+    const wishListBtn = document.getElementById('add-to-wishlist-btn');
+    const vsBtn = document.getElementById('add-to-vs-btn');
+
+    // 3. Attach the event listeners directly
+    wishListBtn.addEventListener('click', async () => {
+        const productData = purgeProductJson(data);
+        const success = saveToStorage('wish_list', productData);
+        if (success) {
+            triggerSuccessAnimation(wishListBtn, "Added to Wish List! ❤️");
+        } else {
+            triggerSuccessAnimation(wishListBtn, "Already in Wish List!", true);
+        }
+    });
+
+    vsBtn.addEventListener('click', () => {
+        const productData = purgeProductJson(data);
+        saveToStorage('vs', productData, 2);
+        triggerSuccessAnimation(vsBtn, "Added to Compare! ⚔️");
+    });
 }
