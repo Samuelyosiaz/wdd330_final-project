@@ -780,10 +780,25 @@ button.add-vs:active {
   color: var(--headline-color);
   cursor: pointer;
 }
+#wishlist-content {
+  display: flex;
+  flex-direction: column;
+}
+.empty-wishlist {
+  text-align: center;
+  margin: 7rem 0;
+  color: var(--paragraph-color);
+}
 
 @media (min-width: 768px) {
   .wishlist-row {
     flex-direction: row;  
   }
+
+  .wishlist-image{
+    width: 200px;
+    height: 200px;
+  }
 }
+
 /*end of wishlist page styles*/
