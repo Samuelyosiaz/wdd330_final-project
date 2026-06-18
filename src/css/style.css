@@ -39,14 +39,6 @@ body {
   text-decoration: none;
 }
 
-.filters-title {
-  font: var(--title-font);
-  color: var(--headline-color);
-  margin: 0;
-  padding: 0;
-  background-color: transparent;
-  padding: 0.5rem 2rem;
-}
 
 /* header styles */
 
