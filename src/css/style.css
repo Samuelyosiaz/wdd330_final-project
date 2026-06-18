@@ -39,6 +39,15 @@ body {
   text-decoration: none;
 }
 
+.filters-title {
+  font: var(--title-font);
+  color: var(--headline-color);
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  padding: 0.5rem 2rem;
+}
+
 /* header styles */
 
 .main-header {
@@ -96,6 +105,7 @@ nav {
     margin: 0;
     padding: 0;
     background-color: var(--stroke-color);
+    z-index: 100;
 
     & li {
         background-color: transparent;
@@ -286,8 +296,9 @@ footer {
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 20px;
   padding: 20px;
-  max-width: 1200px;
+  max-width: 90%;
   margin: 0 auto;
+  
 }
 
 /* Tarjeta de producto */
@@ -600,7 +611,7 @@ footer {
   align-items: center;
   margin: 0 0;
   flex: 1;
-  justify-content: around;
+  justify-content: space-around;
 }
 .versus-added {
   margin: .5rem 2rem;
@@ -668,6 +679,7 @@ button.add-vs:active {
 /*wishlist page styles*/
 .wishlist-row {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   background-color: var(--background-color); 
@@ -767,5 +779,11 @@ button.add-vs:active {
   background-color: var(--button-color);
   color: var(--headline-color);
   cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .wishlist-row {
+    flex-direction: row;  
+  }
 }
 /*end of wishlist page styles*/

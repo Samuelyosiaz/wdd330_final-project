@@ -6,11 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>wdd330_final-project | Phones</title>
     <link rel="stylesheet" href="/css/style.css" />
-    <script src="../js/products.js" type="module"></script>
+    <script src="../js/product.js" type="module"></script>
   </head>
   <body>
     <header class="main-header" id="main-header"></header>
-    <main class="main-phones" id="main-phones">
       <div class="filters-container">
         <h2 class="filters-title">Filters</h2>
         <form id="filters-form">
@@ -19,21 +18,11 @@
                 <label for="filter-brand">Brand</label>
                 <select id="filter-brand" name="brand">
                     <option value="">Select Brand</option>
-                    <option value="apple">Apple</option>
-                    <option value="samsung">Samsung</option>
-                    <option value="dell">Motorola</option>
-                    <option value="lenovo">Xiaomi</option>
-                </select>
-            </div>
-
-            <div class="filter-group">
-                <label for="filter-year">Release Year</label>
-                <select id="filter-year" name="year">
-                    <option value="">Select Year</option>
-                    <option value="2026">2026</option>
-                    <option value="2025">2025</option>
-                    <option value="2024">2024</option>
-                    <option value="2023">2023</option>
+                    <option value="Apple smartphones">Apple</option>
+                    <option value="Samsung smartphones">Samsung</option>
+                    <option value="Motorola smartphones">Motorola</option>
+                    <option value="Xiaomi smartphones">Xiaomi</option>
+                    <option value="Honor smartphones">Honor</option>
                 </select>
             </div>
 
@@ -56,8 +45,7 @@
         </form>
       </div>
 
-    </main>
-    <h1>Phones</h1>
+    <main class="main-home" id="main-home"></main>
     <footer class="footer" id="main-footer"></footer>
   </body>
 </html>
