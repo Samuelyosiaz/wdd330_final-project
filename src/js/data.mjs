@@ -62,7 +62,7 @@ export async function loadProductDetails() {
     }
 
     const productData = await response.json();
-    return productData; // Retornamos el objeto fresco de la API
+    return productData; 
 
   } catch (error) {
     console.error("Error while loading the product data", error);

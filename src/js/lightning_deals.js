@@ -36,7 +36,7 @@ export function renderProductCards(jsonData) {
         ${tag ? `<span class="product-tag">${tag}</span>` : ''}
       </div>
       <div class="card-info">
-        <a href="../product_details/index.html?endpoint=${secureEndpoint}" class="product-link" rel="noopener noreferrer">
+        <a href="../product_details/index.html?endpoint=${secureEndpoint}" class="product-link">
           <h3 class="product-title">${title}</h3>
           <p class="product-price">${price}</p>
         </a>
