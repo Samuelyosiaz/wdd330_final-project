@@ -24,6 +24,7 @@ export default defineConfig({
         phones: resolve(__dirname, "src/phones/index.html"),
         vs: resolve(__dirname, "src/vs/index.html"),
         wish_list: resolve(__dirname, "src/wish_list/index.html"),
+        product_details: resolve(__dirname, "src/product_details/index.html"),
       },
     },
   },
